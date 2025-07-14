@@ -142,4 +142,32 @@
         transparent 50%
       );
   }
+
+  /* Mobile-specific optimizations */
+  @media (max-width: 768px) {
+    .hero-gradient {
+      background:
+        radial-gradient(
+          circle at 50% 50%,
+          rgba(70, 36, 76, 0.6) 0%,
+          transparent 70%
+        ),
+        radial-gradient(
+          circle at 80% 20%,
+          rgba(206, 73, 191, 0.4) 0%,
+          transparent 60%
+        );
+    }
+
+    .glass-card {
+      backdrop-blur: 8px;
+    }
+  }
+
+  /* Smooth scroll behavior */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
 }
