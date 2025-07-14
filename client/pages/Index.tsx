@@ -1,62 +1,262 @@
-import { DemoResponse } from "@shared/api";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import GeometricShapes from "@/components/3d/GeometricShapes";
+import FloatingCards from "@/components/3d/FloatingCards";
+import {
+  TrendingUp,
+  Shield,
+  Zap,
+  BarChart3,
+  ArrowRight,
+  Star,
+  Users,
+  DollarSign,
+  Target,
+  Sparkles,
+  Globe,
+  Lock,
+} from "lucide-react";
 
 export default function Index() {
-  const [exampleFromServer, setExampleFromServer] = useState("");
-  // Fetch users on component mount
+  const [isLoaded, setIsLoaded] = useState(false);
+
   useEffect(() => {
-    fetchDemo();
+    setIsLoaded(true);
   }, []);
 
-  // Example of how to fetch data from the server (if needed)
-  const fetchDemo = async () => {
-    try {
-      const response = await fetch("/api/demo");
-      const data = (await response.json()) as DemoResponse;
-      setExampleFromServer(data.message);
-    } catch (error) {
-      console.error("Error fetching hello:", error);
-    }
-  };
-
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-100 to-slate-200">
-      <div className="text-center">
-        {/* TODO: FUSION_GENERATION_APP_PLACEHOLDER replace everything here with the actual app! */}
-        <h1 className="text-2xl font-semibold text-slate-800 flex items-center justify-center gap-3">
-          <svg
-            className="animate-spin h-8 w-8 text-slate-400"
-            viewBox="0 0 50 50"
+    <div className="min-h-screen bg-background text-foreground">
+      {/* Navigation */}
+      <nav className="fixed top-0 w-full z-50 glass-card border-b border-white/10">
+        <div className="container mx-auto px-6 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-2">
+              <div className="w-8 h-8 bg-purple-gradient rounded-lg flex items-center justify-center">
+                <TrendingUp className="w-5 h-5 text-white" />
+              </div>
+              <span className="text-xl font-bold gradient-text">FinanceAI</span>
+            </div>
+            <div className="hidden md:flex items-center space-x-8">
+              <a
+                href="#features"
+                className="text-sm hover:text-accent transition-colors"
+              >
+                Features
+              </a>
+              <a
+                href="#pricing"
+                className="text-sm hover:text-accent transition-colors"
+              >
+                Pricing
+              </a>
+              <a
+                href="#about"
+                className="text-sm hover:text-accent transition-colors"
+              >
+                About
+              </a>
+              <Button variant="outline" size="sm">
+                Sign In
+              </Button>
+              <Button size="sm" className="bg-purple-gradient hover:opacity-90">
+                Get Started
+              </Button>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Background Effects */}
+        <div className="absolute inset-0 hero-gradient" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_0%,_rgba(0,0,0,0.3)_100%)]" />
+
+        {/* 3D Background Elements */}
+        <div className="absolute inset-0 opacity-30">
+          <Suspense fallback={null}>
+            <GeometricShapes />
+          </Suspense>
+        </div>
+
+        <div className="container mx-auto px-6 text-center relative z-10">
+          <div className="max-w-4xl mx-auto">
+            <Badge className="mb-6 bg-purple-500/20 text-purple-300 border-purple-500/30">
+              <Sparkles className="w-3 h-3 mr-1" />
+              AI-Powered Finance Platform
+            </Badge>
+
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+              <span className="gradient-text">Revolutionize</span>
+              <br />
+              Your Financial
+              <br />
+              <span className="gradient-text">Future</span>
+            </h1>
+
+            <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+              Experience next-generation trading with AI-powered insights,
+              real-time analytics, and institutional-grade security.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+              <Button
+                size="lg"
+                className="bg-purple-gradient hover:opacity-90 text-lg px-8 py-6 glow-effect"
+              >
+                Start Trading Now
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Button>
+              <Button
+                variant="outline"
+                size="lg"
+                className="text-lg px-8 py-6 border-purple-500/30 hover:bg-purple-500/10"
+              >
+                Watch Demo
+              </Button>
+            </div>
+
+            {/* Stats */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
+              <div className="glass-card p-6">
+                <div className="text-3xl font-bold gradient-text">$2.4B+</div>
+                <div className="text-sm text-muted-foreground">
+                  Assets Under Management
+                </div>
+              </div>
+              <div className="glass-card p-6">
+                <div className="text-3xl font-bold gradient-text">150K+</div>
+                <div className="text-sm text-muted-foreground">
+                  Active Traders
+                </div>
+              </div>
+              <div className="glass-card p-6">
+                <div className="text-3xl font-bold gradient-text">99.9%</div>
+                <div className="text-sm text-muted-foreground">Uptime</div>
+              </div>
+              <div className="glass-card p-6">
+                <div className="text-3xl font-bold gradient-text">24/7</div>
+                <div className="text-sm text-muted-foreground">Support</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section id="features" className="py-24 relative">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              <span className="gradient-text">Powerful Features</span>
+              <br />
+              for Modern Trading
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Discover the tools and technologies that make FinanceAI the most
+              advanced trading platform.
+            </p>
+          </div>
+
+          {/* 3D Floating Cards */}
+          <div className="relative h-96 mb-16">
+            <Suspense fallback={null}>
+              <FloatingCards />
+            </Suspense>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <Card className="glass-card border-purple-500/20 hover:border-purple-500/40 transition-all group">
+              <CardContent className="p-8">
+                <div className="w-12 h-12 bg-purple-gradient rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <Zap className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-xl font-semibold mb-3">
+                  AI-Powered Trading
+                </h3>
+                <p className="text-muted-foreground">
+                  Advanced algorithms analyze market patterns and execute trades
+                  with precision, maximizing your returns while minimizing risk.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="glass-card border-purple-500/20 hover:border-purple-500/40 transition-all group">
+              <CardContent className="p-8">
+                <div className="w-12 h-12 bg-purple-gradient rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <BarChart3 className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-xl font-semibold mb-3">
+                  Real-Time Analytics
+                </h3>
+                <p className="text-muted-foreground">
+                  Get instant insights with comprehensive charts, indicators,
+                  and market data updated in real-time across all major
+                  exchanges.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="glass-card border-purple-500/20 hover:border-purple-500/40 transition-all group">
+              <CardContent className="p-8">
+                <div className="w-12 h-12 bg-purple-gradient rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <Shield className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-xl font-semibold mb-3">
+                  Bank-Grade Security
+                </h3>
+                <p className="text-muted-foreground">
+                  Your funds and data are protected with military-grade
+                  encryption, multi-factor authentication, and cold storage
+                  solutions.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-24 relative">
+        <div className="absolute inset-0 bg-purple-gradient opacity-10" />
+        <div className="container mx-auto px-6 text-center relative z-10">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            Ready to Transform Your
+            <br />
+            <span className="gradient-text">Trading Experience?</span>
+          </h2>
+          <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+            Join thousands of traders who have already discovered the power of
+            AI-driven finance.
+          </p>
+          <Button
+            size="lg"
+            className="bg-purple-gradient hover:opacity-90 text-lg px-12 py-6 glow-effect"
           >
-            <circle
-              className="opacity-30"
-              cx="25"
-              cy="25"
-              r="20"
-              stroke="currentColor"
-              strokeWidth="5"
-              fill="none"
-            />
-            <circle
-              className="text-slate-600"
-              cx="25"
-              cy="25"
-              r="20"
-              stroke="currentColor"
-              strokeWidth="5"
-              fill="none"
-              strokeDasharray="100"
-              strokeDashoffset="75"
-            />
-          </svg>
-          Generating your app...
-        </h1>
-        <p className="mt-4 text-slate-600 max-w-md">
-          Watch the chat on the left for updates that might need your attention
-          to finish generating
-        </p>
-        <p className="mt-4 hidden max-w-md">{exampleFromServer}</p>
-      </div>
+            Get Started Today
+            <ArrowRight className="w-5 h-5 ml-2" />
+          </Button>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-12 border-t border-white/10">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col md:flex-row items-center justify-between">
+            <div className="flex items-center space-x-2 mb-4 md:mb-0">
+              <div className="w-8 h-8 bg-purple-gradient rounded-lg flex items-center justify-center">
+                <TrendingUp className="w-5 h-5 text-white" />
+              </div>
+              <span className="text-xl font-bold gradient-text">FinanceAI</span>
+            </div>
+            <div className="text-sm text-muted-foreground">
+              © 2024 FinanceAI. All rights reserved.
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
