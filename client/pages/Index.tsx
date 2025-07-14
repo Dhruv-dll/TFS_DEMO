@@ -93,11 +93,16 @@ export default function Index() {
         <div className="absolute inset-0 hero-gradient" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_0%,_rgba(0,0,0,0.3)_100%)]" />
 
-        {/* 3D Background Elements */}
-        <div className="absolute inset-0 opacity-30">
+        {/* 3D Background Elements - Hidden on mobile for performance */}
+        <div className="absolute inset-0 opacity-30 hidden md:block">
           <Suspense fallback={null}>
             <GeometricShapes />
           </Suspense>
+        </div>
+
+        {/* Mobile gradient overlay */}
+        <div className="absolute inset-0 md:hidden">
+          <div className="w-full h-full bg-gradient-to-br from-purple-900/20 via-pink-900/20 to-purple-900/20" />
         </div>
 
         <div className="container mx-auto px-6 text-center relative z-10">
