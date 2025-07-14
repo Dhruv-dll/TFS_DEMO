@@ -38,7 +38,7 @@ export default function Index() {
               </div>
               <span className="text-xl font-bold gradient-text">FinanceAI</span>
             </div>
-            <div className="hidden md:flex items-center space-x-8">
+            <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
               <a
                 href="#features"
                 className="text-sm hover:text-accent transition-colors"
@@ -62,6 +62,25 @@ export default function Index() {
               </Button>
               <Button size="sm" className="bg-purple-gradient hover:opacity-90">
                 Get Started
+              </Button>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <div className="md:hidden">
+              <Button variant="ghost" size="sm">
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                </svg>
               </Button>
             </div>
           </div>
@@ -88,7 +107,7 @@ export default function Index() {
               AI-Powered Finance Platform
             </Badge>
 
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
               <span className="gradient-text">Revolutionize</span>
               <br />
               Your Financial
@@ -96,7 +115,7 @@ export default function Index() {
               <span className="gradient-text">Future</span>
             </h1>
 
-            <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto px-4">
               Experience next-generation trading with AI-powered insights,
               real-time analytics, and institutional-grade security.
             </p>
@@ -119,26 +138,38 @@ export default function Index() {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
-              <div className="glass-card p-6">
-                <div className="text-3xl font-bold gradient-text">$2.4B+</div>
-                <div className="text-sm text-muted-foreground">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mt-16 px-4">
+              <div className="glass-card p-4 md:p-6">
+                <div className="text-2xl md:text-3xl font-bold gradient-text">
+                  $2.4B+
+                </div>
+                <div className="text-xs md:text-sm text-muted-foreground">
                   Assets Under Management
                 </div>
               </div>
-              <div className="glass-card p-6">
-                <div className="text-3xl font-bold gradient-text">150K+</div>
-                <div className="text-sm text-muted-foreground">
+              <div className="glass-card p-4 md:p-6">
+                <div className="text-2xl md:text-3xl font-bold gradient-text">
+                  150K+
+                </div>
+                <div className="text-xs md:text-sm text-muted-foreground">
                   Active Traders
                 </div>
               </div>
-              <div className="glass-card p-6">
-                <div className="text-3xl font-bold gradient-text">99.9%</div>
-                <div className="text-sm text-muted-foreground">Uptime</div>
+              <div className="glass-card p-4 md:p-6">
+                <div className="text-2xl md:text-3xl font-bold gradient-text">
+                  99.9%
+                </div>
+                <div className="text-xs md:text-sm text-muted-foreground">
+                  Uptime
+                </div>
               </div>
-              <div className="glass-card p-6">
-                <div className="text-3xl font-bold gradient-text">24/7</div>
-                <div className="text-sm text-muted-foreground">Support</div>
+              <div className="glass-card p-4 md:p-6">
+                <div className="text-2xl md:text-3xl font-bold gradient-text">
+                  24/7
+                </div>
+                <div className="text-xs md:text-sm text-muted-foreground">
+                  Support
+                </div>
               </div>
             </div>
           </div>
@@ -160,16 +191,16 @@ export default function Index() {
             </p>
           </div>
 
-          {/* 3D Floating Cards */}
-          <div className="relative h-96 mb-16">
+          {/* 3D Floating Cards - Hidden on mobile for performance */}
+          <div className="relative h-64 md:h-96 mb-16 hidden sm:block">
             <Suspense fallback={null}>
               <FloatingCards />
             </Suspense>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             <Card className="glass-card border-purple-500/20 hover:border-purple-500/40 transition-all group">
-              <CardContent className="p-8">
+              <CardContent className="p-6 md:p-8">
                 <div className="w-12 h-12 bg-purple-gradient rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <Zap className="w-6 h-6 text-white" />
                 </div>
@@ -184,7 +215,7 @@ export default function Index() {
             </Card>
 
             <Card className="glass-card border-purple-500/20 hover:border-purple-500/40 transition-all group">
-              <CardContent className="p-8">
+              <CardContent className="p-6 md:p-8">
                 <div className="w-12 h-12 bg-purple-gradient rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <BarChart3 className="w-6 h-6 text-white" />
                 </div>
@@ -200,7 +231,7 @@ export default function Index() {
             </Card>
 
             <Card className="glass-card border-purple-500/20 hover:border-purple-500/40 transition-all group">
-              <CardContent className="p-8">
+              <CardContent className="p-6 md:p-8">
                 <div className="w-12 h-12 bg-purple-gradient rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <Shield className="w-6 h-6 text-white" />
                 </div>
