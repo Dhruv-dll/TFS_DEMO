@@ -1,5 +1,5 @@
 import { Canvas } from "@react-three/fiber";
-import { Float, Text3D, Center } from "@react-three/drei";
+import { Float, Center } from "@react-three/drei";
 import { useRef } from "react";
 import * as THREE from "three";
 
