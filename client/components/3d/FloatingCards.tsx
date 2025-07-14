@@ -41,23 +41,20 @@ function Card3D({
           />
         </mesh>
 
-        {/* Text */}
+        {/* Text - Using simple geometry since font file may not exist */}
         <Center>
-          <Text3D
-            font="/fonts/inter.json"
-            size={0.2}
-            height={0.05}
-            position={[0, 0, 0.1]}
-          >
-            {text}
+          <mesh position={[0, 0, 0.1]}>
+            <boxGeometry args={[1.5, 0.3, 0.05]} />
             <meshStandardMaterial
               color="#ffffff"
               metalness={0.1}
               roughness={0.1}
               emissive="#ffffff"
               emissiveIntensity={0.1}
+              transparent
+              opacity={0.9}
             />
-          </Text3D>
+          </mesh>
         </Center>
       </group>
     </Float>
